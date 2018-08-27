@@ -26,7 +26,7 @@ VOLUME /bitmonero
 
 EXPOSE 18080 18081 8080
 
-CMD ./monero-$MONERO_RELEASE/monerod --config-file /bitmonero/bitmonero.conf \
+CMD ./monero-$MONERO_RELEASE/monerod --config-file /bitmonero/bitmonero.conf --detach \
   && ./monero-$MONERO_RELEASE/monero-wallet-rpc --config-file /bitmonero/wallet.conf
 
 # ENTRYPOINT "./monero-$MONERO_RELEASE/monerod" "--config-file=/bitmonero/bitmonero.conf"
