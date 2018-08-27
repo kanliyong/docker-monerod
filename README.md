@@ -31,3 +31,4 @@ curl -X POST \
   -d '{"jsonrpc":"2.0","method":"create_wallet","params":{"filename":"defaultwallet","password":"123456","language":"English"},"id":1}'
 
 ```
+## RPC Documents https://getmonero.org/resources/developer-guides/wallet-rpc.html
