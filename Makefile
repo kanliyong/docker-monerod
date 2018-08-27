@@ -1,5 +1,5 @@
 SOURCE=.
-IMAGENAME=m3h7/monerod
+IMAGENAME=kanliyong/monerod
 MONERO_RELEASE=v0.12.3.0
 
 .PHONY: all
@@ -19,7 +19,6 @@ pull:
 
 build:
 	docker build --tag $(IMAGENAME) --build-arg MONERO_RELEASE=${MONERO_RELEASE} $(SOURCE)
-	docker tag $(IMAGENAME) $(IMAGENAME):$(MONERO_RELEASE)
 
 push: build
 	docker tag $(IMAGENAME) $(REGISTRY)/$(IMAGENAME)

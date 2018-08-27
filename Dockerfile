@@ -1,3 +1,5 @@
+
+
 FROM centos:7
 LABEL MAINTANER mahiso <maik@mahiso.de>
 
@@ -22,6 +24,13 @@ RUN gpg --keyserver hkp://pool.sks-keyservers.net --recv 0x55432DF31CCD4FCD &&\
 
 VOLUME /bitmonero
 
-EXPOSE 18080 18081
+EXPOSE 18080 18081 8080
 
-ENTRYPOINT "./monero-$MONERO_RELEASE/monerod" "--config-file=/bitmonero/bitmonero.conf"
+CMD ./monero-$MONERO_RELEASE/monerod --data-dir /bitmonero \
+  --rpc-bind-ip 0.0.0.0 --rpc-bind-port 18081  --log-file /bitmonero/bitmonero.log --detach --confirm-external-bind \
+  && ./monero-$MONERO_RELEASE/monero-wallet-rpc --wallet-dir /bitmonero/wallet \
+  --rpc-bind-ip 0.0.0.0  --rpc-bind-port 8080 --confirm-external-bind --disable-rpc-login
+
+# ENTRYPOINT "./monero-$MONERO_RELEASE/monerod" "--config-file=/bitmonero/bitmonero.conf"
+# docker run -p 30001:18080 -p 30002:18081 -p 30003:8080 
+# --restart=always -v /root/docker_xmr/bitmonero:/bitmonero --name=monerod -td m3h7/monerod:latest
