@@ -1,6 +1,6 @@
 SOURCE=.
 IMAGENAME=m3h7/monerod
-MONERO_RELEASE=v0.12.0.0
+MONERO_RELEASE=v0.12.3.0
 
 .PHONY: all
 all: usage
