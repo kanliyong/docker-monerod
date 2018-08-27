@@ -11,14 +11,14 @@ The blockchain is loaded from the `/bitmonero` volume. This volume should contai
 
 ```sh
 # Clone repository
-git clone https://github.com/mahiso/docker-monerod
+git clone https://github.com/kanliyong/docker-monerod.git
 cd docker-monerod
 # Build image:
 make build
 # Create blockchain volume and copy configuration:
-mkdir /share/bitmonero && cp bitmonero.conf /share/bitmonero
+mkdir ~/bitmonero 
 # Run container
-docker run -p 18080:18080 -p 18081:18081 --restart=always -v /share/bitmonero:/bitmonero --name=monerod -td m3h7/monerod
+docker run -p 18080:18080 -p 18081:18081 -p 8080:8080 --restart=always -v ~/bitmonero:/bitmonero --name=monerod -td kanliyong/monerod:latest
 # View logs
 docker logs -f monerod
 ```

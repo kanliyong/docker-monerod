@@ -26,10 +26,8 @@ VOLUME /bitmonero
 
 EXPOSE 18080 18081 8080
 
-CMD ./monero-$MONERO_RELEASE/monerod --data-dir /bitmonero \
-  --rpc-bind-ip 0.0.0.0 --rpc-bind-port 18081  --log-file /bitmonero/bitmonero.log --detach --confirm-external-bind \
-  && ./monero-$MONERO_RELEASE/monero-wallet-rpc --wallet-dir /bitmonero/wallet \
-  --rpc-bind-ip 0.0.0.0  --rpc-bind-port 8080 --confirm-external-bind --disable-rpc-login
+CMD ./monero-$MONERO_RELEASE/monerod --config-file /bitmonero/bitmonero.conf \
+  && ./monero-$MONERO_RELEASE/monero-wallet-rpc --config-file /bitmonero/wallet.conf
 
 # ENTRYPOINT "./monero-$MONERO_RELEASE/monerod" "--config-file=/bitmonero/bitmonero.conf"
 # docker run -p 30001:18080 -p 30002:18081 -p 30003:8080 
