@@ -22,3 +22,12 @@ docker run -p 18080:18080 -p 18081:18081 -p 8080:8080 --restart=always -v ~/bitm
 # View logs
 docker logs -f monerod
 ```
+
+## Create wallet
+```bash
+curl -X POST \
+  http://127.0.0.1:30003/json_rpc \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"create_wallet","params":{"filename":"defaultwallet","password":"123456","language":"English"},"id":1}'
+
+```
